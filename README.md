@@ -7,7 +7,7 @@ Example usage in a basic web page can be found in .html file.
 
 This shifting cipher function uses the English alphabet with 26 letters. After a plaintext and shift value is given, it takes each character of the plaintext and changes it with the character /shift/ steps ahead.
 
-Example usage:
+# Example usage:
 
 Plaintext: Example
 Shifting Value: 5
