@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+
+<h2>Caesar Ciphering / Deciphering</h2>
+<br>
+  <textarea rows="4" cols="50" id="textbox"></textarea>
+  <br>
+  <input type="number" step="1" min="0" id="shift">
+  <br>
+<button id="btn">Cipher</button>
+<button id="debtn">Decipher</button>
+<br>
+<hr>
+<h2>Result</h2>
+<textarea rows="4" cols="50" id="result"></textarea>
+
+
+<script>
+let alphabetArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+
+function cipher(){
+var textArr = document.getElementById("textbox").value.split("");
+var shift = parseInt(document.getElementById("shift").value);
+for(let k=0; k<textArr.length; k++){
+	
+if ((textArr[k] == ' ') || (textArr[k] == '\t') || (textArr[k] == '\n' || alphabetArr.indexOf(textArr[k].toUpperCase())==-1)){
+continue;
+
+}else if(alphabetArr.indexOf(textArr[k].toUpperCase())+shift > 25){
+textArr[k]=alphabetArr[alphabetArr.indexOf(textArr[k].toUpperCase())+shift-26];
+
+}else {
+textArr[k]=alphabetArr[alphabetArr.indexOf(textArr[k].toUpperCase())+shift];
+	}
+}document.getElementById("result").innerHTML = textArr.join().replace(/,/g, '')
+}
+
+	
+function decipher(){
+var textArr = document.getElementById("textbox").value.split("");
+var shift = parseInt(document.getElementById("shift").value);
+	for(let k=0; k<textArr.length; k++){
+if ((textArr[k] == ' ') || (textArr[k] == '\t') || (textArr[k] == '\n' || alphabetArr.indexOf(textArr[k].toUpperCase())==-1)){
+continue;
+
+}else if(alphabetArr.indexOf(textArr[k].toUpperCase())-shift < 0){
+textArr[k]=alphabetArr[alphabetArr.indexOf(textArr[k].toUpperCase())+26-shift];
+
+}else {
+textArr[k]=alphabetArr[alphabetArr.indexOf(textArr[k].toUpperCase())-shift];
+		}
+	}
+document.getElementById("result").innerHTML = textArr.join().replace(/,/g, '')
+}
+	
+	document.getElementById("btn").onclick=function(){
+	cipher();
+	}
+	
+	document.getElementById("debtn").onclick=function(){
+	decipher();
+	}
+	
+</script>
+</center>
+</body>
+</html>
